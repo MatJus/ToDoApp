@@ -1,0 +1,59 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.7'
+    id 'org.javamodularity.moduleplugin' version '1.5.0'
+}
+
+application {
+    mainClassName = 'pl.kul.todos.adapter.gui.FxApplication'
+}
+
+test {
+    moduleOptions {
+        runOnClasspath = true
+    }
+}
+
+javafx {
+    modules = ['javafx.controls']
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir "src/main/resources"
+            includes = ["**/*.css"]
+        }
+    }
+}
+
+group 'pl.kul'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 12
+targetCompatibility = 12
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'com.rometools', name: 'rome', version: '1.12.0'
+    // compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.16'
+    
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.11.1'
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.28.2'
+
+    testCompile group: 'com.github.tomakehurst', name: 'wiremock', version: '2.23.2'
+
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.16'
+
+    // https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver
+    compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.10.2'
+
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '2.0.0-alpha1'
+}
+
